@@ -1,11 +1,15 @@
 package Ventana;
 
+import Datos.Libro;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class MenuInicial extends JFrame {
 
+    private List<Libro> libroList;
     BuscarLibro buscarLibro;
     AgregarLibro agregarLibro;
     PrestarLibro prestarLibro;
@@ -17,19 +21,21 @@ public class MenuInicial extends JFrame {
     private JPanel Panel2;
 
 
-    public MenuInicial(){
+    public MenuInicial(List<Libro> libroList){
         super("Menu inicial");
         setContentPane(Panel2);
         setSize(400,400);
+        this.libroList = libroList;
 
         buscarLibroButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 if(buscarLibro != null){
+                    BuscarLibro buscarLibro = new BuscarLibro(libroList);
                     buscarLibro.setVisible(true);
                 }
                 else{
-                    buscarLibro = new BuscarLibro();
+                    buscarLibro = new BuscarLibro(libroList);
                 }
             }
         });
@@ -39,7 +45,7 @@ public class MenuInicial extends JFrame {
                 if(agregarLibro != null){
                     agregarLibro.setVisible(true);
                 }else{
-                    agregarLibro = new AgregarLibro();
+                    agregarLibro = new AgregarLibro(libroList);
                 }
             }
         });
@@ -49,7 +55,7 @@ public class MenuInicial extends JFrame {
                 if(prestarLibro != null){
                     prestarLibro.setVisible(true);
                 }else{
-                    prestarLibro = new PrestarLibro();
+                    prestarLibro = new PrestarLibro(libroList);
                 }
 
             }
@@ -60,7 +66,7 @@ public class MenuInicial extends JFrame {
                 if(devolverLibro != null){
                     devolverLibro.setVisible(true);
                 }else{
-                    devolverLibro = new DevolverLibro();
+                    devolverLibro = new DevolverLibro(libroList);
                 }
             }
         });
