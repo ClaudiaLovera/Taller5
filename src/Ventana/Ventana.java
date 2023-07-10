@@ -9,6 +9,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+/**
+ * Clase que contiene los objetos de la "ventana"
+ */
 public class Ventana extends JFrame{
     private static List<Libro> libroList;
     private static List<Usuario> usuariosList;
@@ -19,16 +22,23 @@ public class Ventana extends JFrame{
     private JButton cerrarProgramaButton;
     private JPanel Panel;
 
+    /**
+     * Constructor de la clase
+     * @param listaLibros arreglo de libros
+     * @param listaUsuarios arreglo de usuarios
+     */
     public Ventana(List<Libro> listaLibros,List<Usuario> listaUsuarios){
         super("Iniciar sesion ");
         setContentPane(Panel);
+        //Cierra la ventana al presionar la x de la ventana
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
-
-
-
         libroList = listaLibros;
         usuariosList = listaUsuarios;
+
+        /**
+         * Boton al que se le da una accion al presionarlo
+         * Dispose() destruye la ventana
+         */
         cerrarProgramaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -36,6 +46,10 @@ public class Ventana extends JFrame{
                 System.exit(0);
             }
         });
+
+        /**
+         * Boton al que se le da una accion, en este caso el de iniciar sesion
+         */
         iniciarSesiónButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -47,9 +61,10 @@ public class Ventana extends JFrame{
             private void ingresar() {
                 String rut = rutField.getText();
                 String contrasenia = ContraseniaField.getText();
-                //Buscar al usuario en la lista según el RUT y la contraseña
+                //Busca al usuario en la lista según el RUT y la contraseña
                 Usuario buscarUsuario = buscarUsuario(rut, contrasenia);
 
+                //Si el usuario no es nulo, desplegara el mensaje
                 if (buscarUsuario != null) {
                     JOptionPane.showMessageDialog(null, "¡Ingreso Valido!");
 
@@ -63,6 +78,7 @@ public class Ventana extends JFrame{
                     }
 
                 } else {
+                    //Desplega un mensaje de error en caso de ingresar algun dato erroneo
                     JOptionPane.showMessageDialog(null, "Ha ingresado un dato erroneo...");
 
                 }

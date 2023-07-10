@@ -16,17 +16,26 @@ import java.util.List;
 
 public class Main {
 
+    /**
+     * Arreglos usados para guardar la informacion
+     */
     private static List<Libro> libroList = new ArrayList<>();
     private static List<Usuario> usuarioList = new ArrayList<>();
     public static void main(String[] args) {
         leerArchivoUsuarios();
         leerArchivoLibros();
 
+        /**
+         * Crea e inicia la ventana
+         */
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
+                //Crea la ventana enviandole los arreglos para su uso
                 JFrame ventana = new Ventana(libroList,usuarioList);
+                //Establece el tamaño de la ventana
                 ventana.setSize(400,400);
+                //Pone como visible la ventana
                 ventana.setVisible(true);
 
                 MenuInicial menuInicial = new MenuInicial(libroList);
@@ -37,6 +46,9 @@ public class Main {
 
     }
 
+    /**
+     * Metodo para leer el archivo que contiene los libros
+     */
     public static void leerArchivoLibros() {
         ListaLibros listaLibros = new ListaLibros();
 
@@ -53,12 +65,14 @@ public class Main {
                 int copies = Integer.parseInt(chain[4]);
                 int price = Integer.parseInt(chain[5]);
 
+                //Guarda el libro en una estructura de datos
                 Libro libro = new Libro(isbn,title,author,category,copies,price);
                 libroList.add(libro);
 
-                //TODO: Guardar el libro en algúna estructura de datos.
+
 
             }
+            //Atrapa las excepciones de campo
         } catch (Exception e) {
             System.out.println("Error al leer el archivo: " + e.getMessage());
         }
@@ -80,12 +94,13 @@ public class Main {
                 String lastname = chain[2];
                 String password = chain[3];
 
+                //Guarda el usuario en una estructura de datos
                 Usuario usuario = new Usuario(name,rut,lastname,password);
                 usuarioList.add(usuario);
 
 
-                //TODO: Guardar el usuario en algúna estructura de datos.
             }
+            //Atrapa las excepciones de campo
         } catch (Exception e) {
             System.out.println("Error al leer el archivo: " + e.getMessage());
         }

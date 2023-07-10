@@ -7,6 +7,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+/**
+ * Clase que contiene los objetos del panel menuInicial
+ */
 public class MenuInicial extends JFrame {
 
     private List<Libro> libroList;
@@ -20,6 +23,10 @@ public class MenuInicial extends JFrame {
     private JButton devolverLibroButton;
     private JPanel Panel2;
 
+    /**
+     * Constructor del libro
+     * @param libroList arreglo de libros
+     */
 
     public MenuInicial(List<Libro> libroList){
         super("Menu inicial");
@@ -27,6 +34,9 @@ public class MenuInicial extends JFrame {
         setSize(400,400);
         this.libroList = libroList;
 
+        /**
+         * Boton al que se le da una accion, en este caso al presionar buscarLibro, se dirigira a la pestaña de buscarLibro
+         */
         buscarLibroButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -39,6 +49,10 @@ public class MenuInicial extends JFrame {
                 }
             }
         });
+
+        /**
+         * Boton al que se le da una accion, en este caso al presionar agregarLibro, se dirigira a la pestaña de agregarLibro
+         */
         agregarLibroButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -49,6 +63,10 @@ public class MenuInicial extends JFrame {
                 }
             }
         });
+
+        /**
+         * Boton al que se le da una accion, en este caso al presionar prestarLibro, se dirigira a la pestaña de prestarLibro
+         */
         prestarLibroButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -60,6 +78,10 @@ public class MenuInicial extends JFrame {
 
             }
         });
+
+        /**
+         * Boton al que se le da una accion, en este caso al presionar devolverLibro se dirigira a la pestaña de devolverLibro
+         */
         devolverLibroButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
