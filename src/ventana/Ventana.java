@@ -1,7 +1,6 @@
-package Ventana;
+package ventana;
 
 import Datos.Libro;
-import Datos.ListaUsuario;
 import Datos.Usuario;
 
 import javax.swing.*;
@@ -19,7 +18,6 @@ public class Ventana extends JFrame {
     private static List<Libro> libroList;
     private static List<Usuario> usuarioList;
     private MenuInicial menuInicial;
-    private AgregarLibro agregarLibro;
     private JTextField rutField;
     private JTextField ContraseniaField;
     private JButton iniciarSesionButton;
@@ -60,9 +58,9 @@ public class Ventana extends JFrame {
              */
             private void ingresar() {
                 String rut = rutField.getText();
-                String contrasenia = ContraseniaField.getText();
+                String password = ContraseniaField.getText();
                 //Buscar al usuario en la lista según el RUT y la contraseña
-                Usuario buscarUsuario = buscarUsuario(rut, contrasenia);
+                Usuario buscarUsuario = buscarUsuario(rut, password);
 
                 //Si el usuario es valido, muestra un mensaje y abre la ventan de Menú Inicial
                 if (buscarUsuario != null) {
@@ -87,12 +85,12 @@ public class Ventana extends JFrame {
             /**Método para buscar un usuario en la lista según el RUT y la contraseña ingresada
              *
              * @param rut ; RUT del usuario
-             * @param contrasenia; Contraseña del usuario
+             * @param password ; Contraseña del usuario
              * @return Retorna usuario si se encuentra, o null si no
              */
-            private Usuario buscarUsuario(String rut, String contrasenia) {
+            private Usuario buscarUsuario(String rut, String password) {
                 for (Usuario usuario : usuarioList) {
-                    if (usuario.getRut().equalsIgnoreCase(rut) && usuario.getPassword().equalsIgnoreCase(contrasenia)) {
+                    if (usuario.getRut().equalsIgnoreCase(rut) && usuario.getPassword().equalsIgnoreCase(password)) {
                         return usuario; //Se retorna el usuario si se encuentra
                     }
                 }

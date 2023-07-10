@@ -1,13 +1,9 @@
 import Datos.Libro;
 import Datos.ListaLibros;
-import Datos.ListaUsuario;
 import Datos.Usuario;
-import Ventana.Ventana;
-import Ventana.BuscarLibro;
-import Ventana.PrestarLibro;
-import Ventana.MenuInicial;
+import ventana.Ventana;
+import ventana.MenuInicial;
 import javax.swing.*;
-import java.awt.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -39,7 +35,7 @@ public class Main {
                 //Pone como visible la ventana
                 ventana.setVisible(true);
 
-                //Inicia el menu principal
+                //Inicia el menu principal ya que al ingresar los datos y comparararlos, no se validan, incluso siendo los mismos datos :C
                 MenuInicial menuInicial = new MenuInicial(libroList);
                 menuInicial.setVisible(true);
 

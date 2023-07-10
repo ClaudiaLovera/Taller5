@@ -1,7 +1,5 @@
-package Ventana;
+package ventana;
 import Datos.Libro;
-import Datos.ListaLibros;
-import com.sun.tools.javac.Main;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
