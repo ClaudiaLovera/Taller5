@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class Ventana extends JFrame {
     private static List<Libro> libroList;
-    private static List<Usuario> usuariosList;
+    private static List<Usuario> usuarioList;
     private MenuInicial menuInicial;
     private AgregarLibro agregarLibro;
     private JTextField rutField;
@@ -37,7 +37,7 @@ public class Ventana extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         libroList = listaLibros;
-        usuariosList = listaUsuarios;
+        usuarioList = listaUsuarios;
         //Se le da una acción al botón 'Cerrar Programa'
         cerrarProgramaButton.addActionListener(new ActionListener() {
 
@@ -63,6 +63,7 @@ public class Ventana extends JFrame {
                 String contrasenia = ContraseniaField.getText();
                 //Buscar al usuario en la lista según el RUT y la contraseña
                 Usuario buscarUsuario = buscarUsuario(rut, contrasenia);
+
                 //Si el usuario es valido, muestra un mensaje y abre la ventan de Menú Inicial
                 if (buscarUsuario != null) {
                     JOptionPane.showMessageDialog(null, "¡Ingreso Valido!");
@@ -70,10 +71,12 @@ public class Ventana extends JFrame {
                     if (menuInicial != null) {
                         //Mostrar por ventana si ya existe
                         menuInicial.setVisible(true);
+
                     } else {
                         //Nueva instancia en Menú Inicial
                         menuInicial = new MenuInicial(libroList);
                     }
+
                 } else {
                     //Muestra un mensaje de error si los datos son incorrectos
                     JOptionPane.showMessageDialog(null, "Ha ingresado un dato erroneo...");
@@ -84,15 +87,16 @@ public class Ventana extends JFrame {
             /**Método para buscar un usuario en la lista según el RUT y la contraseña ingresada
              *
              * @param rut ; RUT del usuario
-             * @param contrasenia ; Contraseña del usuario
+             * @param contrasenia; Contraseña del usuario
              * @return Retorna usuario si se encuentra, o null si no
              */
             private Usuario buscarUsuario(String rut, String contrasenia) {
-                for (Usuario usuario : usuariosList) {
+                for (Usuario usuario : usuarioList) {
                     if (usuario.getRut().equalsIgnoreCase(rut) && usuario.getPassword().equalsIgnoreCase(contrasenia)) {
                         return usuario; //Se retorna el usuario si se encuentra
                     }
                 }
+
                 return null; //Retorna null si el usuario no se encuentra
             }
 
@@ -102,7 +106,7 @@ public class Ventana extends JFrame {
             private void crearArchivo() {
                 try (PrintWriter writer = new PrintWriter(new FileWriter("registro.txt"))) {
                     // Recorrer la lista de usuarios
-                    for (Usuario usuario : usuariosList) {
+                    for (Usuario usuario : usuarioList) {
                         //Recorrer la lista de libros prestados
                         for (Libro libro : libroList) {
                             //Escribir los datos en el archivo
