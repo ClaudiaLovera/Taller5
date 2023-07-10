@@ -10,6 +10,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +39,7 @@ public class Main {
                 //Pone como visible la ventana
                 ventana.setVisible(true);
 
+                //Inicia el menu principal
                 MenuInicial menuInicial = new MenuInicial(libroList);
                 menuInicial.setVisible(true);
 
@@ -73,7 +75,7 @@ public class Main {
 
             }
             //Atrapa las excepciones de campo
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.out.println("Error al leer el archivo: " + e.getMessage());
         }
 
@@ -101,7 +103,7 @@ public class Main {
 
             }
             //Atrapa las excepciones de campo
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.out.println("Error al leer el archivo: " + e.getMessage());
         }
     }
